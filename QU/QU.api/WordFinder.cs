@@ -38,7 +38,7 @@ namespace QU.api
             var orderedResult = _wordsOccurrencies.Where(x => x.Item2 > 0)
                 .GroupBy(x => x.Item1).Select(t => new { Word = t.Key, Count = t.Sum(z => z.Item2) })
                 .OrderByDescending(x => x.Count)
-                .Select(x => x.Word).ToArray();
+                .Select(x => x.Word).Take(10).ToArray();
 
             return orderedResult;
         }
